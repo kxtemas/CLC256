@@ -84,8 +84,8 @@
             @endif
 
             <div class="content">
-                <div class="header">
-                    HireMe
+                <div class="header"><h1><img src="/CLC256/src/img/logo.png"/>HireMe</h1>
+              
                 </div>
 
                 <div class="links">
