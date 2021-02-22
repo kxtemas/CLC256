@@ -38,9 +38,13 @@ Route::get('/dashboard', function () { return view('admin.dashboard'); }); });
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/userlist', function () {return view('admin.register-edit');});
 Route::get('/adminpanel', 'NavigationController@index');
+Route::get('/joblist', 'NavigationController@indexjob');
 Route::post('/admin/delete', 'AdminController@showDelete');
 Route::post('/admin/suspend', 'AdminController@showSuspend');
 Route::post('/admin/reactivate', 'AdminController@showReactivate');
+Route::post('/post/job/add', 'JobController@addJob')->name('job.add');
+Route::post('/admin/jobs/delete', 'JobController@deleteJob')->name('admin.job.delete');
+Route::post('admin/jobs/update', 'JobController@updateJob')->name('admin.job.update');
 
 
 

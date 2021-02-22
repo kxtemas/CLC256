@@ -7,7 +7,13 @@ use App\Http\Controllers\Controller;
 class NavigationController extends Controller {
     public function index(){
         $users = DB::select('select * from users');
+
         return view('admin.register-edit',['users'=>$users]);
+    }
+  public function indexjob(){
+        $job = DB::select('select * from jobs');
+        $listOfJobs = (new SecurityService())->getAllJobs();
+        return view('admin.jobadmin',['jobs'=>$job])->with('list', $listOfJobs);
     }
 
     public function showAdmin(){
@@ -20,5 +26,25 @@ class NavigationController extends Controller {
         $user = (new SecurityService())->getUser();
         return view('admin.register-edit')
             ->with('user', $user);
+    }
+public function showJobAdmin()
+    {
+        $listOfJobs = (new SecurityService())->getAllJobs();
+        return view('admin\job_administration')
+            ->with('list', $listOfJobs);
+    }
+  public function visitJob($id)
+    {
+        $securityService = new SecurityService();
+        $job = $securityService->getJob($id);
+        return view('search\visit_job')
+            ->with('job', $job);
+    }
+   public function showJobUpdate(Request $request)
+    {
+        $id = $request->input('id');
+        $job = (new SecurityService())->getJob($id);
+        return view('admin\job_edit')
+            ->with('job', $job);
     }
 }
