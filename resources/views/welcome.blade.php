@@ -90,7 +90,7 @@
 
                 <div class="links">
                
-                    <a href="">JOB Listings</a>      
+                    <a href="{{url('/viewsjobs')}}">Job Listings</a>      
                     <a href="">Blog</a>             
                     <a href="{{url('/profile')}}">My Profile</a>
                 </div>

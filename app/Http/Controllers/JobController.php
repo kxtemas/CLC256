@@ -24,7 +24,8 @@ class JobController extends Controller
         $phone = $request->input('phonenumber');
         $email = $request->input('email');
         (new SecurityService())->addJob($title, $description, $location, $type, $pay, $company, $employment, $phone, $email);
-        return redirect()->route('post.job');
+        
+  return view('admin.dashboard');
     }
 
     //Update Job
@@ -51,7 +52,8 @@ class JobController extends Controller
         $securityService->updateJob($id, 'employment', $employment);
         $securityService->updateJob($id, 'phonenumber', $phone);
         $securityService->updateJob($id, 'email', $email);
-        return redirect()->route('admin.job');
+        echo("Successful Update");
+        return view('admin.dashboard');
     }
 
     //Delete Job
@@ -59,6 +61,8 @@ class JobController extends Controller
     {
         $id = $request->input('id');
         (new SecurityService())->deleteJob($id);
-        return redirect()->route('admin.job');
+       // return redirect()->route('admin.jobadmin');
+ echo ("The Job Posting has been deleted.");
+        return view('admin.dashboard');
     }
 }

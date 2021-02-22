@@ -10,7 +10,7 @@ class NavigationController extends Controller {
 
         return view('admin.register-edit',['users'=>$users]);
     }
-  public function indexjob(){
+  public function showJobAdmin(){
         $job = DB::select('select * from jobs');
         $listOfJobs = (new SecurityService())->getAllJobs();
         return view('admin.jobadmin',['jobs'=>$job])->with('list', $listOfJobs);
@@ -21,18 +21,20 @@ class NavigationController extends Controller {
         return view('admin.register-edit')
             ->with('list', $listOfUsers);
     }
+    
+    public function showJobs(){
+        $job = DB::select('select * from jobs');
+        $listOfJobs = (new SecurityService())->getAllJobs();
+        return view('viewsjobs',['jobs'=>$job])->with('list', $listOfJobs);
+    }
+    
 
     public function showUpdate(){
         $user = (new SecurityService())->getUser();
         return view('admin.register-edit')
             ->with('user', $user);
     }
-public function showJobAdmin()
-    {
-        $listOfJobs = (new SecurityService())->getAllJobs();
-        return view('admin\job_administration')
-            ->with('list', $listOfJobs);
-    }
+
   public function visitJob($id)
     {
         $securityService = new SecurityService();
@@ -44,7 +46,7 @@ public function showJobAdmin()
     {
         $id = $request->input('id');
         $job = (new SecurityService())->getJob($id);
-        return view('admin\job_edit')
+        return view('admin.jobedit')
             ->with('job', $job);
     }
 }

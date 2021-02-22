@@ -43,10 +43,10 @@
                         <label for="typeInput">{{__('Type:')}}</label>
                         <select class="form-control" id="typeInput" name="type">
                             <option value="{{$job->type}}">{{$job->type}}</option>
-                            @if($job->type == 'On-Premise')
+                            @if($job->type == 'On-Ground')
                                 <option value="Remote">Remote</option>
                             @else
-                                <option value="On-Premise">On-Premise</option>
+                                <option value="On-Ground">On-Ground</option>
                             @endif
                         </select>
                     </div>
@@ -63,52 +63,31 @@
                             <option value="{{$job->employment}}">{{$job->employment}}</option>
                             @if($job->employment == "Full-Time")
                                 <option value="Part-Time">{{__('Part Time')}}</option>
-                                <option value="Contract">{{__('Contract')}}</option>
-                                <option value="Temporary">{{__('Temporary')}}</option>
-                                <option value="Volunteer">{{__('Volunteer')}}</option>
+                                <option value="Seasonal">{{__('Seasonal')}}</option>
                                 <option value="Internship">{{__('Internship')}}</option>
                                 <option value="Other">{{__('Other')}}</option>
+                                
                             @elseif($job->employment == "Part-Time")
-                                <option value="Full-Time">{{__('Full-Time')}}</option>
-                                <option value="Contract">{{__('Contract')}}</option>
-                                <option value="Temporary">{{__('Temporary')}}</option>
-                                <option value="Volunteer">{{__('Volunteer')}}</option>
+                                <option value="Full-Time">{{__('Full-Time')}}</option>             
+                                <option value="Seasonal">{{__('Seasonal')}}</option>                   
                                 <option value="Internship">{{__('Internship')}}</option>
                                 <option value="Other">{{__('Other')}}</option>
-                            @elseif($job->employment == "Contract")
-                                <option value="Full-Time">{{__('Full-Time')}}</option>
-                                <option value="Part-Time">{{__('Part Time')}}</option>
-                                <option value="Temporary">{{__('Temporary')}}</option>
-                                <option value="Volunteer">{{__('Volunteer')}}</option>
-                                <option value="Internship">{{__('Internship')}}</option>
-                                <option value="Other">{{__('Other')}}</option>
-                            @elseif($job->employment == "Temporary")
+                           
+                            @elseif($job->employment == "Seasonal")
                                 <option value="Full-Time">{{__('Full-Time')}}</option>
                                 <option value="Part-Time">{{__('Part Time')}}</option>
-                                <option value="Contract">{{__('Contract')}}</option>
-                                <option value="Volunteer">{{__('Volunteer')}}</option>
                                 <option value="Internship">{{__('Internship')}}</option>
                                 <option value="Other">{{__('Other')}}</option>
-                            @elseif($job->employment == "Volunteer")
-                                <option value="Full-Time">{{__('Full-Time')}}</option>
-                                <option value="Part-Time">{{__('Part Time')}}</option>
-                                <option value="Contract">{{__('Contract')}}</option>
-                                <option value="Temporary">{{__('Temporary')}}</option>
-                                <option value="Internship">{{__('Internship')}}</option>
-                                <option value="Other">{{__('Other')}}</option>
+                           
                             @elseif($job->employment == "Internship")
                                 <option value="Full-Time">{{__('Full-Time')}}</option>
-                                <option value="Part-Time">{{__('Part Time')}}</option>
-                                <option value="Contract">{{__('Contract')}}</option>
-                                <option value="Temporary">{{__('Temporary')}}</option>
-                                <option value="Volunteer">{{__('Volunteer')}}</option>
+                                <option value="Part-Time">{{__('Part Time')}}</option>                             
+                                <option value="Seasonal">{{__('Seasonal')}}</option>
                                 <option value="Other">{{__('Other')}}</option>
                             @elseif($job->employment == "Other")
                                 <option value="Full-Time">{{__('Full-Time')}}</option>
-                                <option value="Part-Time">{{__('Part Time')}}</option>
-                                <option value="Contract">{{__('Contract')}}</option>
-                                <option value="Temporary">{{__('Temporary')}}</option>
-                                <option value="Volunteer">{{__('Volunteer')}}</option>
+                                <option value="Part-Time">{{__('Part Time')}}</option>                      
+                                <option value="Seasonal">{{__('Seasonal')}}</option>   
                                 <option value="Internship">{{__('Internship')}}</option>
                             @endif
                         </select>
@@ -126,7 +105,12 @@
                                value="{{$job->email}}" name="email">
                     </div>
                 </div>
-                <button class="btn btn-outline-light" type="submit">{{__('Update')}}</button>
+               <td align="center">
+                        <form action="{{action('JobController@updateJob')}}" method="post"> 
+                             @csrf                           
+                            <button class="btn btn-danger" type="submit">Add</button> 
+                      </form> 
+                     </td> 
             </form>
         </div>
     </div>

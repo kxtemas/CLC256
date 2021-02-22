@@ -1,5 +1,15 @@
-@extends('layouts.app')
 
+@extends('layouts.app')
+ <style>
+            html, body {
+                background-color: #E9967A;
+                color: #636b6f;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
+                height: 100vh;
+                margin: 0;
+            }
+            </style>
 @section('content')
     <div class="card">
         <div class="card-header">
@@ -38,7 +48,7 @@
                         <label for="typeInput">{{__('Type:')}}</label>
                         <select class="form-control" id="typeInput" name="type">
                             <option value="Remote">Remote</option>
-                            <option value="On-Premise">On Premise</option>
+                            <option value="On-Ground">On Ground</option>
                         </select>
                     </div>
                     <div class="col-md-4 mb-3">
@@ -52,9 +62,7 @@
                         <select class="form-control" id="employmentInput" name="employment">
                             <option value="Full-Time">{{__('Full-Time')}}</option>
                             <option value="Part-Time">{{__('Part Time')}}</option>
-                            <option value="Contract">{{__('Contract')}}</option>
-                            <option value="Temporary">{{__('Temporary')}}</option>
-                            <option value="Volunteer">{{__('Volunteer')}}</option>
+                            <option value="	Seasonal">{{__('Seasonal')}}</option>
                             <option value="Internship">{{__('Internship')}}</option>
                             <option value="Other">{{__('Other')}}</option>
                         </select>
@@ -72,7 +80,14 @@
                                 name="email">
                     </div>
                 </div>
-                <button class="btn btn-outline-light" type="submit">{{__('Post')}}</button>
+            
+                <td align="center">
+                        <form action="{{action('JobController@addJob')}}" method="post"> 
+                             @csrf 
+                           
+                            <button class="btn btn-danger" type="submit">Add</button> 
+                      </form> 
+                     </td> 
             </form>
         </div>
     </div>

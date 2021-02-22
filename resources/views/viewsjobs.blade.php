@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
  <style>
             html, body {
@@ -42,25 +41,13 @@
                     <td>{{$job->phonenumber}}</td>
                     <td>{{$job->email}}</td>
                     <td align="center">
-                    
-    			<form action="{{route('admin.job.edit')}}" method="get">
-                            @csrf
-                            <input type="hidden" value="{{$job->id}}" name="id">
-                            <button class="btn btn-info" type="submit">Edit</button>
-                        </form>
-                    </td>
-                    <td align="center">
-                        <form action="{{action('JobController@deleteJob')}}" method="post"> 
-                             @csrf 
-                             <input type="hidden" value="{{$job->id}}" name="id">
-                            <button class="btn btn-danger" type="submit">Delete</button> 
-                      </form> 
-                     </td> 
+                      </td>
                 </tr>
             @endforeach
 
             </tbody>
 
-        </table>
+        </table>     
   
 @endsection
+                    
