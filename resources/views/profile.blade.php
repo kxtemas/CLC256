@@ -95,7 +95,7 @@ $username = $udbs->GetUsernameByID($userID);
 			<!-- Skills -->   			
 			<tr>
 				<td>Skills</td>
-				<td><?php echo $profile->getSkillsList(); ?>"</td>
+				<td><?php echo $profile->getSkillsList(); ?></td>
 			</tr>
 			
 			<!-- Job History -->   			
