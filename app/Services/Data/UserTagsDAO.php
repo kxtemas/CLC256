@@ -54,7 +54,11 @@ class UserTagsDAO
         return DB::table('usertags')->where('UserID', $userID)->where('TagID', $tagID)->exists();
     }
 
-    
+    /**
+     * Adds the UserTage to the table if the user doesn't already have one
+     * @param UserTagsModel $model
+     * @return boolean
+     */
     public function AddNewUserTag(UserTagsModel $model)
     {
         // Check to see if the user already has the tag
@@ -72,7 +76,11 @@ class UserTagsDAO
         
     }
     
-    
+    /**
+     * Deletes the UserTage from the tabe if the user has the tag
+     * @param UserTagsModel $model
+     * @return boolean
+     */
     public function DeleteUserTag(UserTagsModel $model)
     {
         // Check to see if the user doesn't has the tag

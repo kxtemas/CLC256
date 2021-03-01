@@ -77,7 +77,7 @@ class TagsDAO
     }
     
     /**
-     * 
+     * Updates the tag in the database.
      * @param TagsModel $model
      * @return boolean
      */
