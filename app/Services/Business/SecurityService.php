@@ -16,6 +16,10 @@ class SecurityService{
     public function getUser(){
         return (new SecurityDAO())->getUserDAO();
     }
+    
+    public function getUserByID(int $id){
+        return (new SecurityDAO())->getUserByIDDAO($id);
+    }
 
     public function updateUser($targetValue, $updatedValue){
         return (new SecurityDAO())->updateUserDAO($targetValue, $updatedValue);

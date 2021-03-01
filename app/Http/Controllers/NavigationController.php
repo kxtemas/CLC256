@@ -66,12 +66,26 @@ public function showGroupAdmin(){
  
     //Group Page
     public function showGroupActions($id){
+        $secService = new SecurityService();
+        
         $group = (new SecurityService())->getGroupByID($id);
         $listOfGroups = (new SecurityService())->getAllGroups();
-        $listOfMembers = (new AffinityGroupUserDAO())->GetRowIDsByGroupID($id);
-        $member = (new AffinityGroupUserDAO())->
+        $listOfMemberIds = (new AffinityGroupUserDAO())->GetRowIDsByGroupID($id);
+        
+        //$member = (new AffinityGroupUserDAO())->
+        
+        $listOfMemberModels = array();
+        
+        // loop through all of the retrived userIDs
+        foreach ($listOfMemberIds as $memberID)
+        {
+            array_push($listOfMemberModels, $secService->getUserByID($memberID));
+        }
+        
+        
+        
         return view('viewgroups')
-        ->with('group', $group)->with('list', $listOfGroups)->with('members', $listOfMembers);
+        ->with('group', $group)->with('list', $listOfGroups)->with('members', $listOfMemberModels);
       
     }
    
