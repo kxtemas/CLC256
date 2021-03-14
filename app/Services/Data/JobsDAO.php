@@ -42,10 +42,10 @@ class JobsDAO
     public function getJobsByKeyword($keyword, $targetCol)
     {
         // Create jobs array
-        $jobs = array();
+//         $jobs = array();
         
         // Get the jobs from the DB with the keyword
-        //$result = Job::query()->where($targetCol, 'LIKE', "%{$keyword}%")->get();
+//         $result = Job::query()->where($targetCol, 'LIKE', "%{$keyword}%")->get();
         return Job::query()->where($targetCol, 'LIKE', "%{$keyword}%")->get();
         
         
