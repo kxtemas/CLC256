@@ -39,6 +39,9 @@ Route::get('/applyjobs', 'NavigationController@showJobs');
 Route::get('/jobs/{id}', 'NavigationController@showJobActions')->name('job.actions');
 Route::post('/job/apply', 'JobController@applyJob')->name('job.apply');
 
+Route::get('/jobsearch', function() {return view('job.jobsearch');});
+Route::post('/jobsearch/search', 'JobController@searchForJob')->name('job.search');
+
 
 
 //admin routes
@@ -57,8 +60,6 @@ Route::get('/joblist', 'NavigationController@showJobAdmin');
 Route::get('/jobpost', function()  {return view('admin.jobpost');});
 Route::get('/jobedit', function()  {return view('admin.jobedit');});
 
-Route::get('/jobsearch', function() {return view('job.jobsearch');});
-Route::post('/jobsearch/search', 'JobController@searchForJob')->name('job.search');
 
 Route::get('/admin/jobs/edit', 'NavigationController@showJobUpdate')->name('admin.job.edit');
 Route::post('/admin/delete', 'AdminController@showDelete');
