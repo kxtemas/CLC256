@@ -69,7 +69,12 @@ class JobsDAO
         
     }
 
-
+    /**
+     * Updates the job listing by the model and id number
+     * @param $model : Both Job models will work.
+     * @param $id int : Job id number.
+     * @return boolean
+     */
     public function updateJobByModel($model, $id)
     {
         
@@ -78,7 +83,7 @@ class JobsDAO
         {
             // Convert the JobModel to Job
             $results = $model->convertToIlluminateJobModel()[1];
-            $id = $results[0];
+            //$id = $results[0];
             $model = $results[1];
         }
         elseif(is_a($model, "Job"))
@@ -88,8 +93,22 @@ class JobsDAO
         // If any other object type comes in
         else return FALSE;
         
-        // Add job into the database
-        $model->save();
+        //Get the Job from the database
+        $job = $this->getJobByID($id);
+        
+        // Apply the changes to the database job
+        $job->title = $model->title;
+        $job->description = $model->description;
+        $job->location = $model->location;
+        $job->type = $model->type;
+        $job->pay_range = $model->pay_range;
+        $job->company = $model->company;
+        $job->employment = $model->employment;
+        $job->phonenumber = $model->phonenumber;
+        $job->email = $model->email;
+        
+        // Save the job to the database and return restult
+        return $job->save();
     }
 }
 
