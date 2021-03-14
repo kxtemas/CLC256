@@ -89,8 +89,8 @@ class JobController extends Controller
         $query = 
         "SELECT * 
          FROM jobs
-         WHERE title LIKE %$keyword%
-         OR description LIKE %$keyword%";
+         WHERE (title LIKE %$keyword%
+         OR description LIKE %$keyword%)";
         
         $job = DB::select($query);
         
