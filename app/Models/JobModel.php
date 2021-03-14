@@ -21,6 +21,8 @@ class JobModel
         $this->email = $email;
     }
     
+
+    
     /**
      * Converts the model to the Illuminate Job Model.
      * 
@@ -113,6 +115,28 @@ class JobModel
         // The two models are the same
         return TRUE;
     }
+    
+    
+    public function getValuesArray()
+    {
+        // Create Values Array()
+        $values =
+        [
+            'title' => $this->title,
+            'description' => $this->description,
+            'location' => $this->location,
+            'type' => $this->type,
+            'pay_range' => $this->pay,
+            'company' => $this->company,
+            'employment' => $this->employment,
+            'phonenumber' => $this->phone,
+            'email' => $this->email
+        ];
+        
+        // Return the values array
+        return $values;
+    }
+    
     
     
     /**
