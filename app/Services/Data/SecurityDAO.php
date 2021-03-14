@@ -10,7 +10,7 @@ use App\Applicant;
  
 class SecurityDAO{
     
-    
+// [USERS] - [USERS] - [USERS] - [USERS] - [USERS] - [USERS] - [USERS] - [USERS] - [USERS] - [USERS] - [USERS]
 //grabs all users
     public function getAllUsersDAO(){
         return User::withTrashed()->get();
@@ -44,25 +44,28 @@ class SecurityDAO{
         $user = $this->getUserByIDDAO($id);
         return $user->restore();
     }
-    //grab all jobs
+
+// [JOBS] - [JOBS] - [JOBS] - [JOBS] - [JOBS] - [JOBS] - [JOBS] - [JOBS] - [JOBS] - [JOBS] - [JOBS] - [JOBS]
+
+//grab all jobs
     public function getAllJobsDAO()
     {
         return Job::all();
     }
-    //update the jobs new info
+//update the jobs new info
     public function updateJobDAO($id, $targetValue, $updatedValue)
     {
         $job = $this->getJobDAO($id);
         $job->$targetValue = $updatedValue;
         return $job->save();
     }
-    //delete jobs
+//delete jobs
     public function deleteJobDAO($id)
     {
         $job = $this->getJobDAO($id);
         return $job->delete();
     }
-    //add job into database
+//add job into database
     public function addJobDAO($title, $description, $location, $type, $pay, $company, $employment, $phone, $email)
     {
         $job = new Job();
@@ -77,30 +80,41 @@ class SecurityDAO{
         $job->email = $email;
         return $job->save();
     }
-    //get a job info
+//get a job info
     public function getJobDAO($id)
     {
         return Job::findOrFail($id);
     }
-    //grab all the groups info
+    
+//search for jobs by keyword in title
+    public function getJobByTitleKeyWordDAO($keyword)
+    {
+        //return Job::find
+    }
+    
+//search for jobs by keyword in description
+    
+// [GROUPS] - [GROUPS] - [GROUPS] - [GROUPS] - [GROUPS] - [GROUPS] - [GROUPS] - [GROUPS] - [GROUPS] - [GROUPS] - [GROUPS]
+    
+//grab all the groups info
     public function getAllGroupsDAO()
     {
         return Group::all();
     }
-    //update the group
+//update the group
     public function updateGroupDAO($id, $targetValue, $updatedValue)
     {
         $group = $this->getGroupDAO($id);
         $group->$targetValue = $updatedValue;
         return $group->save();
     }
-    //delete group
+//delete group
     public function deleteGroupDAO($id)
     {
         $group = $this->getGroupDAO($id);
         return $group->delete();
     }
-    //add group input
+//add group input
     public function addGroupDAO($title, $description)
     {
         $group = new Group();
@@ -109,13 +123,13 @@ class SecurityDAO{
   
         return $group->save();
     }
-    //get one group
+//get one group
     public function getGroupDAO($id)
     {
         return Group::findOrFail($id);
     }
     
-    //Join group
+//Join group
     public function joinGroupDAO($id)
     {
         $membership = new Member();
@@ -123,13 +137,13 @@ class SecurityDAO{
         $membership->GroupID= $id;
         return $membership->save();
     }
-    //Leave group
+//Leave group
     public function leaveGroupDAO($id)
     {
         $membership = Member::where('UserID', Auth::id())->where('GroupID', $id)->first();
         return $membership->delete();
     }
-    //get group info by id
+//get group info by id
     public function getGroupByIDDAO($id)
     {
         return Group::findOrFail($id);

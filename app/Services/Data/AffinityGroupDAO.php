@@ -140,6 +140,7 @@ use App\Models\AffinityGroupModel;
          // Return the ID number of the found group
         return (int)$row->ID;
     }
+    
     public function getAllGroupsDAO(){
         return Group::all();
     }
