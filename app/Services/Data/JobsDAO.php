@@ -110,5 +110,19 @@ class JobsDAO
         // Save the job to the database and return restult
         return $job->save();
     }
+
+    /**
+     * Updates a single property of a job in the database.
+     * @param int $id : Job id number.
+     * @param string $targetValue : The value to change.
+     * @param string $updatedValue : The value the change the target to.
+     * @return boolean
+     */
+    public function updateJobProperty($id, $targetValue, $updatedValue)
+    {
+        $job = $this->getJobByID($id);
+        $job->$targetValue = $updatedValue;
+        return $job->save();
+    }
 }
 
