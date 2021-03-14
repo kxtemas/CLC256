@@ -45,28 +45,30 @@ class JobsDAO
         $jobs = array();
         
         // Get the jobs from the DB with the keyword
-        $result = Job::query()->where($targetCol, 'LIKE', "%{$keyword}%")->get();
+        //$result = Job::query()->where($targetCol, 'LIKE', "%{$keyword}%")->get();
+        return Job::query()->where($targetCol, 'LIKE', "%{$keyword}%")->get();
         
-        // Loop through all of the results
-        foreach($result as $row)
-        {
-            $job = new Job();
-            $job->title = $row->title;
-            $job->description = $row->description;
-            $job->location = $row->location;
-            $job->type = $row->type;
-            $job->pay_range = $row->pay_range;
-            $job->company = $row->company;
-            $job->employment = $row->employment;
-            $job->phonenumber = $row->phonenumber;
-            $job->email = $row->email;
+        
+//         // Loop through all of the results
+//         foreach($result as $row)
+//         {
+//             $job = new Job();
+//             $job->title = $row->title;
+//             $job->description = $row->description;
+//             $job->location = $row->location;
+//             $job->type = $row->type;
+//             $job->pay_range = $row->pay_range;
+//             $job->company = $row->company;
+//             $job->employment = $row->employment;
+//             $job->phonenumber = $row->phonenumber;
+//             $job->email = $row->email;
             
-            // Add job to jobs array
-            array_push($jobs, $job);
-        }
+//             // Add job to jobs array
+//             array_push($jobs, $job);
+//         }
         
-        // return the results of the querry
-        return $jobs;
+//         // return the results of the querry
+//         return $jobs;
     }
     
     /**

@@ -14,48 +14,49 @@
                 
 @section('content')
 
-        <table class="table table-dark table-hover">
-            <thead>
-            <tr class="table-bordered border-light">
-              
-                <th>Job Position</th>
-                <th>Company</th>
-                <th>Description</th>
-                <th>Location</th>
-                <th>Type</th>
-                <th>Pay Range</th>
-                <th>Employment Type</th>
-                <th>Contact Phone Number</th>
-                <th>Contact Email Address</th>
-              
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($list as $job)
-                <tr>
-                  
-                    <td>{{$job->title}}</td>
-                    <td>{{$job->company}}</td>
-                    <td>{{$job->description}}</td>
-                    <td>{{$job->location}}</td>
-                    <td>{{$job->type}}</td>
-                    <td>{{$job->pay_range}}</td>
-                    <td>{{$job->employment}}</td>
-                    <td>{{$job->phonenumber}}</td>
-                    <td>{{$job->email}}</td>
-                    <td align="center">
-                    <form action="{{route('job.actions',$job->id)}}" method="get">
-                            @csrf
-                            <input type="hidden" value="{{$job->id}}" name="id">
-                            <button class="btn btn-info" type="submit">Details</button>
-                        </form>
-                      </td>
-                </tr>
-            @endforeach
+<h2>Search Results</h2>	
+<table class="table table-dark table-hover">
+    <thead>
+    <tr class="table-bordered border-light">
+      
+        <th>Job Position</th>
+        <th>Company</th>
+        <th>Description</th>
+        <th>Location</th>
+        <th>Type</th>
+        <th>Pay Range</th>
+        <th>Employment Type</th>
+        <th>Contact Phone Number</th>
+        <th>Contact Email Address</th>
+      
+    </tr>
+    </thead>
+    <tbody>
+    @foreach($list as $job)
+        <tr>
+          
+            <td>{{$job->title}}</td>
+            <td>{{$job->company}}</td>
+            <td>{{$job->description}}</td>
+            <td>{{$job->location}}</td>
+            <td>{{$job->type}}</td>
+            <td>{{$job->pay_range}}</td>
+            <td>{{$job->employment}}</td>
+            <td>{{$job->phonenumber}}</td>
+            <td>{{$job->email}}</td>
+            <td align="center">
+            <form action="{{route('job.actions',$job->id)}}" method="get">
+                    @csrf
+                    <input type="hidden" value="{{$job->id}}" name="id">
+                    <button class="btn btn-info" type="submit">Details</button>
+                </form>
+              </td>
+        </tr>
+    @endforeach
 
-            </tbody>
+    </tbody>
 
-        </table>  
+</table>  
         
                  
 
