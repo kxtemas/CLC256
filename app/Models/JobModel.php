@@ -73,6 +73,47 @@ class JobModel
         $this->email = $job->email;
     }
     
+    /**
+     * Compares the two Job models
+     * @param JobModel $model
+     * @return boolean
+     */
+    public function equals(JobModel $model)
+    {
+        // If the id's don't match
+        if($this->id != $model->getId()) return FALSE;
+        
+        // If the titles don't match
+        if($this->title != $model->getTitle()) return FALSE;
+        
+        // If the descriptions don't match
+        if($this->description != $model->getDescription()) return FALSE;
+        
+        // If the Locations don't match
+        if($this->location != $model->getLocation()) return FALSE;
+        
+        // If the types don't match
+        if($this->type != $model->getType()) return FALSE;
+        
+        // If the Pays don't match
+        if($this->pay != $model->getPay()) return FALSE;
+        
+        // If the Companies don't match
+        if($this->company != $model->getCompany()) return FALSE;
+        
+        // If the Employments don't match
+        if($this->employment != $model->getEmployment()) return FALSE;
+        
+        // If the PhoneNumbers don't match
+        if($this->phone != $model->getPhone()) return FALSE;
+        
+        // If the Emails don't match
+        if($this->email != $model->getEmail()) return FALSE;
+        
+        // The two models are the same
+        return TRUE;
+    }
+    
     
     /**
      * @return mixed
