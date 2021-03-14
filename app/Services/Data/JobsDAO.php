@@ -2,8 +2,7 @@
 namespace App\Services\Data;
 
 use App\Job;
-use App\Models\JobModel;
-use Illuminate\Support\Facades\DB;
+//use App\Models\JobModel;
 
 class JobsDAO
 {
