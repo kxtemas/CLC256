@@ -54,6 +54,24 @@ class JobModel
         
     }
     
+    /**
+     * Converts the IlluminateJobModel into JobModel with a -1 id. 
+     * Set the proper id number after converting.
+     * @param Job $job
+     */
+    public function convertFromIlluminateJobModel(Job $job)
+    {
+        $this->id = -1;
+        $this->title = $job->title;
+        $this->description = $job->description;
+        $this->location = $job->location;
+        $this->type = $job->type;
+        $this->pay = $job->pay_range;
+        $this->company = $job->company;
+        $this->employment = $job->employment;
+        $this->phone = $job->phonenumber;
+        $this->email = $job->email;
+    }
     
     
     /**
