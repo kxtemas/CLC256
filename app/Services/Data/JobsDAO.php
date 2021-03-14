@@ -34,6 +34,42 @@ class JobsDAO
     }
     
     /**
+     * Returns an array of Jobs that contain the keyword in the target collum.
+     * @param string $keyword : The keyword to look for.
+     * @param string $targetCol : The target collum to look for the keyword in.
+     * @return Job[]
+     */
+    public function getJobsByKeyword($keyword, $targetCol)
+    {
+        // Create jobs array
+        $jobs = array();
+        
+        // Get the jobs from the DB with the keyword
+        $result = Job::query()->where($targetCol, 'LIKE', "%{$keyword}%")->get();
+        
+        // Loop through all of the results
+        foreach($result as $row)
+        {
+            $job = new Job();
+            $job->title = $row->title;
+            $job->description = $row->description;
+            $job->location = $row->location;
+            $job->type = $row->type;
+            $job->pay_range = $row->pay_range;
+            $job->company = $row->company;
+            $job->employment = $row->employment;
+            $job->phonenumber = $row->phonenumber;
+            $job->email = $row->email;
+            
+            // Add job to jobs array
+            array_push($jobs, $job);
+        }
+        
+        // return the results of the querry
+        return $jobs;
+    }
+    
+    /**
      * Deletes the Job by id number
      * @param int $id
      * @return boolean|NULL
@@ -124,5 +160,7 @@ class JobsDAO
         $job->$targetValue = $updatedValue;
         return $job->save();
     }
+    
+    
 }
 
