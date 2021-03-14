@@ -86,14 +86,6 @@ class SecurityDAO{
         return Job::findOrFail($id);
     }
     
-//search for jobs by keyword in title
-    public function getJobByTitleKeyWordDAO($keyword)
-    {
-        //return Job::find
-    }
-    
-//search for jobs by keyword in description
-    
 // [GROUPS] - [GROUPS] - [GROUPS] - [GROUPS] - [GROUPS] - [GROUPS] - [GROUPS] - [GROUPS] - [GROUPS] - [GROUPS] - [GROUPS]
     
 //grab all the groups info
