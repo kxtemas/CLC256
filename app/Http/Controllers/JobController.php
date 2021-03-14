@@ -92,7 +92,7 @@ class JobController extends Controller
          WHERE (title LIKE %$keyword%
          OR description LIKE %$keyword%)";
         
-        $job = DB::select($query);
+        $job = DB::raw($query);
         
         
         $listOfJobs = ($jobsDAO->getJobsByKeyword($keyword, ["title","description"]));
