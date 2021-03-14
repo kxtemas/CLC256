@@ -21,8 +21,18 @@ class JobModel
         $this->email = $email;
     }
     
+    /**
+     * Converts the model to the Illuminate Job Model.
+     * 
+     * @return array{ $id , Job} : First value in the array is the job ID.
+     * Second value in the array is the Job Model
+     */
     public function convertToIlluminateJobModel()
     {
+        // Create output array
+        $output = array();
+        
+        // Convert model properties to Illuminate Model
         $job = new Job();
         $job->title = $this->title;
         $job->description = $this->description;
@@ -33,7 +43,17 @@ class JobModel
         $job->employment = $this->employment;
         $job->phonenumber = $this->phone;
         $job->email = $this->email;
+        
+        // Put Job id into position 0
+        $output[0] = $this->id;
+        // Put Job model into position 1
+        $output[1] = $job;
+        
+        // Return array
+        return $output;
+        
     }
+    
     
     
     /**
