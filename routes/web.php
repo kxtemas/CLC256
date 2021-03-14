@@ -44,10 +44,12 @@ Route::post('/job/apply', 'JobController@applyJob')->name('job.apply');
 //admin routes
 Auth::routes();
 // create for redirect to admin panel using middleware (we have changes in AdminMiddleware,kernel,LoginController files //here auth and admin indicate to folder)
-Route::group(['middleware' => ['auth','admin']],
-    function () {
-        
-        Route::get('/dashboard', function () { return view('admin.dashboard'); });  });
+Route::group(['middleware' => ['auth','admin']], 
+    function () 
+    { 
+        Route::get('/dashboard', function () { return view('admin.dashboard'); });  
+    });
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/userlist', function () {return view('admin.register-edit');});
 Route::get('/adminpanel', 'NavigationController@index');
