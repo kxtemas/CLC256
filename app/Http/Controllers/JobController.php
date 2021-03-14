@@ -96,7 +96,7 @@ class JobController extends Controller
         
         print_r( $job->getValue() );
         
-        $listOfJobs = ($jobsDAO->getJobsByKeyword($keyword, ["title","description"]));
+        $listOfJobs = ($jobsDAO->getJobsByKeyword($keyword, ['title','description']));
         return view('job.jobsearchresults',['jobs'=>$job])->with('list', $listOfJobs);
     }
 }
