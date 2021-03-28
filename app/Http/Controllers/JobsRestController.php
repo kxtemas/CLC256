@@ -1,19 +1,28 @@
 <?php
 
-
 namespace App\Http\Controllers;
 use App\DTO;
 use Illuminate\Http\Request;
 use App\Services\Business\SecurityService;
+use App\Services\Business\RestService;
 
 class JobsRestController extends Controller
 {
+    private $rest;
+    public function __construct(){
+        $this->rest = new RestService();
+    }
     public function index()
     {
-        $service = new SecurityService();
-        $dto = new DTO();
-        $dto->data = $service->getAllJobs();
-        return $dto;
+        $jobs = $this->rest->getAllJobs();
+        if($jobs){
+            
+            $dto = new DTO("200", "Users Found", $jobs);
+        }else{
+            $dto = new DTO('404', 'No User Found', NULL);
+        }
+        return json_encode($dto);
+        
     }
     
     /**
@@ -24,10 +33,16 @@ class JobsRestController extends Controller
      */
     public function show($id)
     {
-        $service = new SecurityService();
-        $dto = new DTO();
-        $dto->data = $service->getJob($id);
-        return $dto;
+        $job = $this->rest->findJobByID($id);
+        if($job){
+            
+            $dto = new DTO("200", "Users Found", $job);
+        }else{
+            $dto = new DTO('404', 'No User Found', NULL);
+        }
+        return json_encode($dto);
+
+    
        
     }
 }
