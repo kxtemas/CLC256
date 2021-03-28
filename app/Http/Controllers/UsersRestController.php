@@ -1,19 +1,19 @@
 <?php
-
-
-namespace App\Http\Controllers;
-use App\DTO;
-use Illuminate\Http\Request;
-use App\Services\Business\SecurityService;
-
-class UsersRestController extends Controller
-{
+private $rest;
+    public function __construct(){
+        $this->rest = new RestService();
+    }
     public function index()
     {
-        $service = new SecurityService();
-        $dto = new DTO();
-        $dto->data = $service->getAllUsers();
-        return $dto;
+        $users = $this->rest->getAllUsers();
+        if($users){
+            
+            $dto = new DTO("200", "Users Found", $users);
+        }else{
+            $dto = new DTO('404', 'No User Found', NULL);
+        }
+         return json_encode($dto);
+
     }
     
     /**
@@ -24,11 +24,19 @@ class UsersRestController extends Controller
      */
     public function show($id)
     {
-        $service = new SecurityService();
-        $dto = new DTO();
-        $dto->data = $service->getUserByID($id);
-        return $dto;
-       
+        $user = $this->rest->findUserByID($id);
+        if($user){
+            
+            $dto = new DTO("200", "User Found", $user);
+        }else{
+            $dto = new DTO('404', 'No User Found', NULL);
+        }
+        return json_encode($dto);
+   
+    
     }
+    
+       
+    
 }
 
