@@ -43,6 +43,9 @@ Route::get('/jobsearch', function() {return view('job.jobsearch');});
 Route::post('/jobsearch/search', 'JobController@searchForJob')->name('job.search');
 
 Route::resource('/usersrest', 'UsersRestController');
+Route::get('/usersrest', 'UsersRestController@index');
+Route::get('/usersrest/{id}', 'UsersRestController@show');
+
 Route::resource('/jobsrest', 'JobsRestController');
 Route::get('/testapi', 'RestClientController@index');
 Route::get('/logout', 'LoginController@logout');
