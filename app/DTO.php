@@ -9,6 +9,8 @@ class DTO implements \JsonSerializable
 	public function __construct() 
 	{
 		$this->data = [];
+        $this->errorCode = null;
+		$this->errorMessage = null;
 	}
 
 	public function jsonSerialize() 
