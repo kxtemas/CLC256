@@ -48,7 +48,7 @@ Route::get('/usersrest/{id}', 'UsersRestController@show');
 
 Route::resource('/jobsrest', 'JobsRestController');
 Route::get('/testapi', 'RestClientController@index');
-Route::get('/logout', 'LoginController@logout');
+Route::get('/logout', 'LoginController@logout'); // Duplicate?
 Route::get('/loggingservice', 'TestLoggingController@index');
 
 
@@ -60,9 +60,8 @@ Route::get('/loggingservice', 'TestLoggingController@index');
 Auth::routes();
 // create for redirect to admin panel using middleware (we have changes in AdminMiddleware,kernel,LoginController files //here auth and admin indicate to folder)
 Route::group(['middleware' => ['auth','admin']],
-    function () {
-        
-        Route::get('/dashboard', function () { return view('admin.dashboard'); });  });
+    function () { Route::get('/dashboard', function () { return view('admin.dashboard'); }); });
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/userlist', function () {return view('admin.register-edit');});
 Route::get('/adminpanel', 'NavigationController@index');

@@ -20,6 +20,8 @@ tags:
   description: "The profile of the user"
 - name: "Other"
   description: "Requests that don't fit in other tags"
+- name: "Admin"
+  description: "The Admin pages of the site"
 schemes:
 - "https"
 - "http"
@@ -58,16 +60,16 @@ paths:
         200:
           description: "Post Success"
   /doRegister:
-      post:
-        tags:
-        - "User"
-        summary: "Attempts to register the user"
-        description: ""
-        produces:
-        - "Response?"
-        responses:
-          200:
-            description: "Post Success"
+    post:
+      tags:
+      - "User"
+      summary: "Attempts to register the user"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
   /register:
     get:
       tags:
@@ -101,9 +103,28 @@ paths:
       responses:
         200:
           description: "Page was found and displayed"  
-  
-  
-  
+  /jobListings:
+    get:
+      tags:
+      - "Job"
+      summary: "Takes the user to the job listing page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /Blog:
+    get:
+      tags:
+      - "Other"
+      summary: "Takes the user to the blog page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed" 
   /editprofile:
     get:
       tags:
@@ -115,6 +136,17 @@ paths:
       responses:
         200:
           description: "Page was found and displayed"
+  /doeditprofile:
+    post:
+      tags:
+      - "Profile"
+      summary: "Attempts to edit the user's profile"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"    
   /profile:
     get:
       tags:
@@ -127,6 +159,78 @@ paths:
         200:
           description: "Page was found and is displayed"
   /viewjobs:
+    get:
+      tags:
+      - "Job"
+      summary: "Returns a list of jobs to the jobs page."
+      description: ""
+      produces:
+      - "html page"
+      responses:
+        200:
+          description: "Page was found and list is displayed."
+  /search:
+    get:
+      tags:
+      - "Other"
+      summary: "Takes the user to the search page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and is displayed."
+  /group/{id}:
+    get:
+      tags:
+      - "Group"
+      summary: "Takes the user to the requested group page"
+      description: ""
+      produces:
+      - "Html page"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "This is the unuique identifier of the group."
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Page was found and is displayed."  
+  /group/join:
+    post:
+      tags:
+      - "Group"
+      summary: "Attempts to join the user to the group"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /group/leave:
+    post:
+      tags:
+      - "Group"
+      summary: "Attempts to leave the group the user is in"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"  
+  /viewgroups:
+    get:
+      tags:
+      - "Group"
+      summary: "Returns a list of groups to the groups page."
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and list is displayed."  
+  /applyjobs:
     get:
       tags:
       - "Job"
@@ -151,12 +255,93 @@ paths:
         description: "This is the unuique identifier of the user."
         required: true
         type: "integer"
-        
-
       responses:
         200:
           description: "Page was found and list is displayed."
-  
+  /job/apply:
+    post:
+      tags:
+      - "Job"
+      summary: "Takes the user to the job's application page"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /jobsearch:
+    get:
+      tags:
+      - "Job"
+      summary: "Takes the user to the job search page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /jobsearch/search:
+    post:
+      tags:
+      - "Job"
+      summary: "Attempts to search for the job"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /usersrest:
+    get:
+      tags:
+      - "User"
+      summary: "Returns JSON of all users"
+      description: ""
+      produces:
+      - "application/JSON"
+      responses:
+        200:
+          description: "JSON was retrieved"
+  /usersrest/{id}:
+    get:
+      tags:
+      - "User"
+      summary: "Return JSON of the requested user"
+      description: ""
+      produces:
+      - "application/JSON"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "The unuique identifier of the user"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "JSON was retrieved"
+  /testapi:
+    get:
+      tags:
+      - "Other"
+      summary: "Tests a RESTapi"
+      description: ""
+      produces:
+      - "application/JSON"
+      responses:
+        200:
+          description: "JSON was retrieved"
+  /loggingservice:
+    get:
+      tags:
+      - "Other"
+      summary: " Access the logging service"
+      description: ""
+      produces:
+      - "Text"
+      responses:
+        200:
+          description: "Page was found and displayed"
+ 
   
 securityDefinitions:
   petstore_auth:
