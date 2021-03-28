@@ -16,14 +16,98 @@ tags:
   description: "A group of users."
 - name: "Job"
   description: "The job the user can look at."
+- name: "Profile"
+  description: "The profile of the user"
+- name: "Other"
+  description: "Requests that don't fit in other tags"
 schemes:
 - "https"
 - "http"
 paths:
+  /:
+    get:
+      tags:
+      - "Other"
+      summary: "Takes the user to the welcome page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /home:
+    get:
+      tags:
+      - "Other"
+      summary: "Takes the user to the home page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /doLogin:
+    post:
+      tags:
+      - "User"
+      summary: "Attempts to login the user"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /doRegister:
+      post:
+        tags:
+        - "User"
+        summary: "Attempts to register the user"
+        description: ""
+        produces:
+        - "Response?"
+        responses:
+          200:
+            description: "Post Success"
+  /register:
+    get:
+      tags:
+      - "User"
+      summary: "Takes the user to the registration page."
+      description: ""
+      produces:
+      - "Web form"
+      responses:
+        200:
+          description: "Page was found and displayed"  
+  /login:
+      get:
+        tags:
+        - "User"
+        summary: "Takes the user to the login page."
+        description: ""
+        produces:
+        - "Web form"
+        responses:
+          200:
+            description: "Page was found and displayed"
+  /logout:
+    get:
+      tags:
+      - "User"
+      summary: "Logs the user out and returns them to the welcome page."
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"  
+  
+  
+  
   /editprofile:
     get:
       tags:
-      - "profile"
+      - "Profile"
       summary: "Takes the user to thier edit profile page."
       description: ""
       produces:
@@ -31,8 +115,47 @@ paths:
       responses:
         200:
           description: "Page was found and displayed"
-  
-  
+  /profile:
+    get:
+      tags:
+      - "Profile"
+      summary: "Takes the user to thier profile page"
+      description: ""
+      produces:
+      - "html page"
+      responses:
+        200:
+          description: "Page was found and is displayed"
+  /viewjobs:
+    get:
+      tags:
+      - "Job"
+      summary: "Returns a list of jobs to the jobs page."
+      description: ""
+      produces:
+      - "html page"
+      responses:
+        200:
+          description: "Page was found and list is displayed."
+  /jobs/{id}:
+    get:
+      tags:
+      - "Job"
+      summary: "Returns the page that contains the job info."
+      description: ""
+      produces:
+      - "text/plain"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "This is the unuique identifier of the user."
+        required: true
+        type: "integer"
+        
+
+      responses:
+        200:
+          description: "Page was found and list is displayed."
   
   
 securityDefinitions:
