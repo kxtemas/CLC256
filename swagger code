@@ -322,7 +322,7 @@ paths:
   /testapi:
     get:
       tags:
-      - "Other"
+      - "Admin"
       summary: "Tests a RESTapi"
       description: ""
       produces:
@@ -333,8 +333,8 @@ paths:
   /loggingservice:
     get:
       tags:
-      - "Other"
-      summary: " Access the logging service"
+      - "Admin"
+      summary: "Access the logging service"
       description: ""
       produces:
       - "Text"
@@ -342,19 +342,227 @@ paths:
         200:
           description: "Page was found and displayed"
  
-  
-securityDefinitions:
-  petstore_auth:
-    type: "oauth2"
-    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
-    flow: "implicit"
-    scopes:
-      write:pets: "modify pets in your account"
-      read:pets: "read your pets"
-  api_key:
-    type: "apiKey"
-    name: "api_key"
-    in: "header"
+  /dashboard:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the admin dashboard"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /userlist:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the usersList"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /adminpanel:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the admin panel"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /joblist:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the admin job list"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /jobpost:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the job post page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /jobedit:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the job edit page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /admin/jobs/edit:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the edit job page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"  
+  /admin/delete:
+    post:
+      tags:
+      - "Admin"
+      summary: "Deletes the requested user"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /admin/suspend:
+    post:
+      tags:
+      - "Admin"
+      summary: "Suspends the requested user"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /admin/reactivate:
+    post:
+      tags:
+      - "Admin"
+      summary: "reactivates the requested user"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"  
+  /admin/jobupdate:
+    post:
+      tags:
+      - "Admin"
+      summary: "Updates the job with the requested changes"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /admin/deletepost:
+    post:
+      tags:
+      - "Admin"
+      summary: "Deletes the requested job posting"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /admin/group/add:
+    post:
+      tags:
+      - "Admin"
+      summary: "Adds a new group to the groups list"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /admin/groupupdate:
+    post:
+      tags:
+      - "Admin"
+      summary: "Updates the group with the requested changes"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /admin/deletegroup:
+    post:
+      tags:
+      - "Admin"
+      summary: "Deletes the requested group"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /admin/job/add:
+    post:
+      tags:
+      - "Admin"
+      summary: "Adds a new job to the job listings"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /grouplist:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the admin group list"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /grouppost:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the admin group creating page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /groupedit:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the admin group edit page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /admin/groups/edit:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the admin group edit page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+
 definitions:
   user:
     type: "object"
@@ -492,8 +700,6 @@ definitions:
         type: "string"
     xml:
       name: "group"
-  
-  
   ApiResponse:
     type: "object"
     properties:
@@ -504,6 +710,7 @@ definitions:
         type: "string"
       message:
         type: "string"
+
 externalDocs:
   description: "Find out more about Swagger"
   url: "http://swagger.io"

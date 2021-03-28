@@ -62,8 +62,8 @@ Auth::routes();
 Route::group(['middleware' => ['auth','admin']],
     function () { Route::get('/dashboard', function () { return view('admin.dashboard'); }); });
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/userlist', function () {return view('admin.register-edit');});
+Route::get('/home', 'HomeController@index')->name('home'); // duplicate?
+Route::get('/userlist', function () {return view('admin.register-edit');}); 
 Route::get('/adminpanel', 'NavigationController@index');
 Route::get('/joblist', 'NavigationController@showJobAdmin');
 Route::get('/jobpost', function()  {return view('admin.jobpost');});
