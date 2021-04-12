@@ -16,6 +16,9 @@ class SecurityService{
     public function getUser(){
         return (new SecurityDAO())->getUserDAO();
     }
+    public function getUserByID(int $id){
+        return (new SecurityDAO())->getUserByIDDAO($id);
+    }
 
     public function updateUser($targetValue, $updatedValue){
         return (new SecurityDAO())->updateUserDAO($targetValue, $updatedValue);
@@ -50,5 +53,48 @@ class SecurityService{
     public function getJob($id){
         return $this->securityDAO->getJobDAO($id);
     }
-
+    public function getAllGroups(){
+        return $this->securityDAO->getAllGroupsDAO();
+    }
+    //Function to edit a job
+    public function updateGroup($id, $targetValue, $updatedValue){
+        return $this->securityDAO->updateGroupDAO($id, $targetValue, $updatedValue);
+    }
+    //Function to delete a job (no soft delete)
+    public function deleteGroup($id){
+        return $this->securityDAO->deleteGroupDAO($id);
+    }
+    //Function to create a job
+    public function addGroup($title, $description){
+        return $this->securityDAO->addGroupDAO($title, $description);
+    }
+    //Function to retrieve the job
+    public function getGroup($id){
+        return $this->securityDAO->getGroupDAO($id);
+    }
+  
+    //Function to join a group
+    public function joinGroup($id){
+        return $this->securityDAO->joinGroupDAO($id);
+    }
+    //Function to leave a group
+    public function leaveGroup($id){
+        return (new SecurityDAO())->leaveGroupDAO($id);
+    }
+    public function getGroupByID($id){
+        return $this->securityDAO->getGroupByIDDAO($id);
+    }
+    public function getMembers($id){
+        return $this->securityDAO->getMembersDAO($id);
+    }
+    //apply job
+    public function applyJob($id){
+        return $this->securityDAO->applyJobDAO($id);
+    }
+    public function getJobByID($id){
+        return $this->securityDAO->getJobByIDDAO($id);
+    }
+    public function leaveJob($id){
+        return (new SecurityDAO())->leaveJobDAO($id);
+    }
 }

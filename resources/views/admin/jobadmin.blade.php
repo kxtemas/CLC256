@@ -10,6 +10,8 @@
                 margin: 0;
             }
             </style>
+  @if(Auth::user()->usertype == 'admin')
+           
 @section('content')
 
         <table class="table table-dark table-hover">
@@ -62,5 +64,8 @@
             </tbody>
 
         </table>
-  
+  @else
+        <h1 class="h1" align="center">Unauthorized Access</h1>
+    
+    @endif
 @endsection

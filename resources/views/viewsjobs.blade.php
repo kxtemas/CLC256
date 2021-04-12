@@ -9,6 +9,9 @@
                 margin: 0;
             }
             </style>
+            
+       
+                
 @section('content')
 
         <table class="table table-dark table-hover">
@@ -41,13 +44,23 @@
                     <td>{{$job->phonenumber}}</td>
                     <td>{{$job->email}}</td>
                     <td align="center">
+                    <form action="{{route('job.actions',$job->id)}}" method="get">
+                            @csrf
+                            <input type="hidden" value="{{$job->id}}" name="id">
+                            <button class="btn btn-info" type="submit">Details</button>
+                        </form>
                       </td>
                 </tr>
             @endforeach
 
             </tbody>
 
-        </table>     
+        </table>  
+        
+                 
+
+                       
+             
   
 @endsection
                     

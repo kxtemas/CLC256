@@ -1,0 +1,716 @@
+swagger: "2.0"
+info:
+  description: "Sample description. Please replace"
+  version: "1.0.0"
+  title: "HireMe Job Search"
+  termsOfService: ""
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost"
+basePath: "/CLC256/public"
+tags:
+- name: "User"
+  description: "The users looking for jobs."
+- name: "Group"
+  description: "A group of users."
+- name: "Job"
+  description: "The job the user can look at."
+- name: "Profile"
+  description: "The profile of the user"
+- name: "Other"
+  description: "Requests that don't fit in other tags"
+- name: "Admin"
+  description: "The Admin pages of the site"
+schemes:
+- "https"
+- "http"
+paths:
+  /:
+    get:
+      tags:
+      - "Other"
+      summary: "Takes the user to the welcome page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /home:
+    get:
+      tags:
+      - "Other"
+      summary: "Takes the user to the home page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /doLogin:
+    post:
+      tags:
+      - "User"
+      summary: "Attempts to login the user"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /doRegister:
+    post:
+      tags:
+      - "User"
+      summary: "Attempts to register the user"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /register:
+    get:
+      tags:
+      - "User"
+      summary: "Takes the user to the registration page."
+      description: ""
+      produces:
+      - "Web form"
+      responses:
+        200:
+          description: "Page was found and displayed"  
+  /login:
+      get:
+        tags:
+        - "User"
+        summary: "Takes the user to the login page."
+        description: ""
+        produces:
+        - "Web form"
+        responses:
+          200:
+            description: "Page was found and displayed"
+  /logout:
+    get:
+      tags:
+      - "User"
+      summary: "Logs the user out and returns them to the welcome page."
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"  
+  /jobListings:
+    get:
+      tags:
+      - "Job"
+      summary: "Takes the user to the job listing page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /Blog:
+    get:
+      tags:
+      - "Other"
+      summary: "Takes the user to the blog page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed" 
+  /editprofile:
+    get:
+      tags:
+      - "Profile"
+      summary: "Takes the user to thier edit profile page."
+      description: ""
+      produces:
+      - "Web form"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /doeditprofile:
+    post:
+      tags:
+      - "Profile"
+      summary: "Attempts to edit the user's profile"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"    
+  /profile:
+    get:
+      tags:
+      - "Profile"
+      summary: "Takes the user to thier profile page"
+      description: ""
+      produces:
+      - "html page"
+      responses:
+        200:
+          description: "Page was found and is displayed"
+  /viewjobs:
+    get:
+      tags:
+      - "Job"
+      summary: "Returns a list of jobs to the jobs page."
+      description: ""
+      produces:
+      - "html page"
+      responses:
+        200:
+          description: "Page was found and list is displayed."
+  /search:
+    get:
+      tags:
+      - "Other"
+      summary: "Takes the user to the search page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and is displayed."
+  /group/{id}:
+    get:
+      tags:
+      - "Group"
+      summary: "Takes the user to the requested group page"
+      description: ""
+      produces:
+      - "Html page"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "This is the unuique identifier of the group."
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Page was found and is displayed."  
+  /group/join:
+    post:
+      tags:
+      - "Group"
+      summary: "Attempts to join the user to the group"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /group/leave:
+    post:
+      tags:
+      - "Group"
+      summary: "Attempts to leave the group the user is in"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"  
+  /viewgroups:
+    get:
+      tags:
+      - "Group"
+      summary: "Returns a list of groups to the groups page."
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and list is displayed."  
+  /applyjobs:
+    get:
+      tags:
+      - "Job"
+      summary: "Returns a list of jobs to the jobs page."
+      description: ""
+      produces:
+      - "html page"
+      responses:
+        200:
+          description: "Page was found and list is displayed."
+  /jobs/{id}:
+    get:
+      tags:
+      - "Job"
+      summary: "Returns the page that contains the job info."
+      description: ""
+      produces:
+      - "text/plain"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "This is the unuique identifier of the user."
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Page was found and list is displayed."
+  /job/apply:
+    post:
+      tags:
+      - "Job"
+      summary: "Takes the user to the job's application page"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /jobsearch:
+    get:
+      tags:
+      - "Job"
+      summary: "Takes the user to the job search page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /jobsearch/search:
+    post:
+      tags:
+      - "Job"
+      summary: "Attempts to search for the job"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /usersrest:
+    get:
+      tags:
+      - "User"
+      summary: "Returns JSON of all users"
+      description: ""
+      produces:
+      - "application/JSON"
+      responses:
+        200:
+          description: "JSON was retrieved"
+  /usersrest/{id}:
+    get:
+      tags:
+      - "User"
+      summary: "Return JSON of the requested user"
+      description: ""
+      produces:
+      - "application/JSON"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "The unuique identifier of the user"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "JSON was retrieved"
+  /testapi:
+    get:
+      tags:
+      - "Admin"
+      summary: "Tests a RESTapi"
+      description: ""
+      produces:
+      - "application/JSON"
+      responses:
+        200:
+          description: "JSON was retrieved"
+  /loggingservice:
+    get:
+      tags:
+      - "Admin"
+      summary: "Access the logging service"
+      description: ""
+      produces:
+      - "Text"
+      responses:
+        200:
+          description: "Page was found and displayed"
+ 
+  /dashboard:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the admin dashboard"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /userlist:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the usersList"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /adminpanel:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the admin panel"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /joblist:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the admin job list"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /jobpost:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the job post page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /jobedit:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the job edit page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /admin/jobs/edit:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the edit job page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"  
+  /admin/delete:
+    post:
+      tags:
+      - "Admin"
+      summary: "Deletes the requested user"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /admin/suspend:
+    post:
+      tags:
+      - "Admin"
+      summary: "Suspends the requested user"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /admin/reactivate:
+    post:
+      tags:
+      - "Admin"
+      summary: "reactivates the requested user"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"  
+  /admin/jobupdate:
+    post:
+      tags:
+      - "Admin"
+      summary: "Updates the job with the requested changes"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /admin/deletepost:
+    post:
+      tags:
+      - "Admin"
+      summary: "Deletes the requested job posting"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /admin/group/add:
+    post:
+      tags:
+      - "Admin"
+      summary: "Adds a new group to the groups list"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /admin/groupupdate:
+    post:
+      tags:
+      - "Admin"
+      summary: "Updates the group with the requested changes"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /admin/deletegroup:
+    post:
+      tags:
+      - "Admin"
+      summary: "Deletes the requested group"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /admin/job/add:
+    post:
+      tags:
+      - "Admin"
+      summary: "Adds a new job to the job listings"
+      description: ""
+      produces:
+      - "Response?"
+      responses:
+        200:
+          description: "Post Success"
+  /grouplist:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the admin group list"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /grouppost:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the admin group creating page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /groupedit:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the admin group edit page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+  /admin/groups/edit:
+    get:
+      tags:
+      - "Admin"
+      summary: "Takes the admin to the admin group edit page"
+      description: ""
+      produces:
+      - "Html Page"
+      responses:
+        200:
+          description: "Page was found and displayed"
+
+definitions:
+  user:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      usertype:
+        type: "string"
+      email:
+        type: "string"
+      email_verified_at:
+        type: "string"
+        format: "timestamp"
+      password:
+        type: "string"
+        format: "hash"
+      remember_token:
+        type: "string"
+      created_at:
+        type: "string"
+        format: "timestamp"
+      updated_at:
+        type: "string"
+        format: "timestamp"
+      deleted_at:
+        type: "string"
+        format: "timestamp"
+    xml:
+      name: "user"
+  tag:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      searchTerm:
+        type: "string"
+    xml:
+      name: "tag"
+  userTag:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      userID:
+        type: "integer"
+        format: "int64"
+      tagID:
+        type: "integer"
+        format: "int64"
+    xml:
+      name: "userTag"
+  userProfile:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      userID:
+        type: "integer"
+        format: "int64"
+      phoneNumber:
+        type: "integer"
+        format: "int64"
+      street:
+        type: "string"
+      city:
+        type: "string"
+      state:
+        type: "string"
+      zipCode:
+        type: "integer"
+        format: "int64"
+      employmentStatus:
+        type: "string"
+      occupation:
+        type: "string"
+      companyName:
+        type: "string"
+      educationalBackground:
+        type: "string"
+      skills:
+        type: "string"
+      jobHistory:
+        type: "string"
+    xml:
+      name: "userProfile"
+  job:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      title:
+        type: "string"
+      description:
+        type: "string"
+      location:
+        type: "string"
+      type:
+        type: "string"
+      pay_range:
+        type: "string"
+      company:
+        type: "string"
+      employment:
+        type: "string"
+      phoneNumber:
+        type: "string"
+      email:
+        type: "string"
+      created_at:
+        type: "string"
+        format: "timestamp"
+      updated_at:
+        type: "string"
+        format: "timestamp"
+    xml:
+      name: "job"
+  group:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      title:
+        type: "string"
+      description:
+        type: "string"
+    xml:
+      name: "group"
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      type:
+        type: "string"
+      message:
+        type: "string"
+
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

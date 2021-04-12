@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use App\Services\Business\SecurityService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Throwable;
+use App\Services\Data\JobsDAO;
 
 class JobController extends Controller
 {
@@ -65,4 +68,34 @@ class JobController extends Controller
  echo ("The Job Posting has been deleted.");
         return view('admin.dashboard');
     }
+
+public function applyJob(Request $request)
+{
+    $id = $request->input('id');
+    try {
+        (new SecurityService())->applyJob($id);
+        return redirect()->route('job.actions', $id);
+    } catch (Throwable $e) {
+        return redirect()->route('job.actions', $id);
+    }
+
 }
+public function searchForJob(Request $request)
+{
+    $keyword = $request->input('keyword');
+    $jobsDAO = new JobsDAO();
+    
+    $query =
+    "SELECT *
+         FROM jobs
+         WHERE (title LIKE %$keyword%
+         OR description LIKE %$keyword%)";
+    
+    $job = DB::raw($query);
+    
+    $listOfJobs = ($jobsDAO->getJobsByKeyword($keyword, 'title'));
+    $listOfJob = ($jobsDAO->getJobsByKeyword($keyword, 'description'));
+    return view('job.jobsearchresults',['jobs'=>$job])->with('list', $listOfJobs)->with('lists',$listOfJob);
+}
+}
+
