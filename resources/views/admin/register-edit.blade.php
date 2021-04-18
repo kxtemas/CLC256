@@ -68,9 +68,7 @@
                             <button class="btn btn-danger" type="submit">Delete</button>
                         </form>
                     </td>
-                    <td align="center">
-                   <button> <a href="{{url('/editprofile')}}" class="btn btn-info">Update</a></button>
-                    </td>
+                   
                               
       @endforeach
             </tbody>

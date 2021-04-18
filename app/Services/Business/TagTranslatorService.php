@@ -62,8 +62,8 @@ class TagTranslatorService
             }
         }
         
-        echo "TagsListS:";
-        print_r($tagsListS);
+     //   echo "TagsListS:";
+      //  print_r($tagsListS);
         
         // Convert Tag strings to Tags
         $output = array();
@@ -90,8 +90,8 @@ class TagTranslatorService
         
         $words = explode(" ", $input);
         
-        echo "words:";
-        print_r($words);
+     //   echo "words:";
+     //   print_r($words);
         
         foreach ($words as $tag)
         {
@@ -100,8 +100,8 @@ class TagTranslatorService
         }
         
         
-        echo "TagsListS:";
-        print_r($tagsListS);
+       // echo "TagsListS:";
+      //  print_r($tagsListS);
         
         // Convert Tag strings to Tags
         $output = array();
@@ -109,8 +109,8 @@ class TagTranslatorService
         {
             array_push($output, new TagsModel(0, $Tag, $Tag));
         }
-        echo "output:";
-        print_r($output);
+      //  echo "output:";
+     //   print_r($output);
         
         // Return the translated tags
         return $output;
