@@ -1,5 +1,8 @@
 <?php
-
+//Charles and Katie
+///CLC 256
+/// Professor Hughes
+/// This is our own work
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
