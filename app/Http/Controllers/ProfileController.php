@@ -57,8 +57,8 @@ class ProfileController extends Controller
                     $tagDAO = new TagsDAO();
                     $tags = array();
                     $tags = $tagTranslate->GetTagsFromStringTEST($userProfile->getSkillsList());
-                    echo "Recived Tags:";
-                    print_r($tags);
+                   // echo "Recived Tags:";
+              //      print_r($tags);
                     $tagIDs = array();
                     
                     // Add found tags to the tag table

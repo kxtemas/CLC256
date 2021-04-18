@@ -49,4 +49,4 @@ class DTO implements JsonSerializable {
     {
         return $this->data;
     }
-}
+

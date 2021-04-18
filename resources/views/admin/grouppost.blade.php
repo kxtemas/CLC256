@@ -22,14 +22,25 @@
             <!--TITLE-->
                 <div class="form-group">
                     <label for="titleInput">{{__('Title:')}}</label>
-                    <input type="text" class="form-control" id="titleInput" placeholder="Title" name="title">
+                    <input type="text" id="titleInput" placeholder="Title" class="form-control @error('name') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
+              
+                                @error('title')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                 </div>
                 <!--DESCRIPTION-->
                 <div class="form-group">
 
                     <label for="degreeInput">{{__('Description:')}}</label><br>
-                    <textarea class="form-control" name="description" id="descriptionInput" rows="5"
-                              placeholder="Description"></textarea>
+                    <textarea id="descriptionInput" rows="5"
+                              placeholder="Description"  class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="description" autofocus></textarea>
+                              @error('description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
 
                 </div>
            

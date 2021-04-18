@@ -16,30 +16,50 @@
                 <!--TITLE-->
                 <div class="form-group">
                     <label for="titleInput">{{__('Title:')}}</label>
-                    <input type="text" class="form-control" id="titleInput" placeholder="Name" value="{{$job->title}}"
+                    <input type="text"  class="form-control @error('title') is-invalid @enderror" required autocomplete="title" autofocus id="titleInput"  value="{{$job->title}}"
                            name="title">
+                            @error('title')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                 </div>
                 <!--DESCRIPTION-->
                 <div class="form-group">
 
                     <label for="degreeInput">{{__('Description:')}}</label><br>
-                    <textarea class="form-control" name="description" id="descriptionInput" rows="5"
+                    <textarea class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description" autofocus id="descriptionInput" rows="5"
                               placeholder="Description">{{$job->description}}</textarea>
 
+                                @error('description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                 </div>
 
                 <div class="form-row align-items-center">
                     <div class="col-md-6 mb-3">
                         <!--COMPANY-->
                         <label for="companyInput">{{__('Company Name:')}}</label>
-                        <input type="text" class="form-control" id="companyInput" placeholder="Company Name"
+                        <input type="text" class="form-control @error('company') is-invalid @enderror" required autocomplete="comapny" autofocus id="companyInput" placeholder="Company Name"
                                name="company" value="{{$job->company}}">
+                               @error('company')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                     </div>
                     <!--LOCATION-->
                     <div class="col-md-4 mb-3">
                         <label for="locationInput">{{__('Location:')}}</label>
-                        <input type="text" class="form-control" id="locationInput"
+                        <input type="text" class="form-control @error('location') is-invalid @enderror" required autocomplete="location" autofocus id="locationInput"
                                placeholder="Location" value="{{$job->location}}" name="location">
+                                @error('location')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                     </div>
                     <!--TYPE-->
                     <div class="col-md-4 mb-3">
@@ -56,8 +76,13 @@
                     <!--PAY RANGE-->
                     <div class="col-md-4 mb-3">
                         <label for="payInput">{{__('Pay Range:')}}</label>
-                        <input type="text" class="form-control" id="payInput" placeholder="Pay Range"
+                        <input type="text" class="form-control @error('pay_range') is-invalid @enderror" required autocomplete="pay_range" autofocus id="payInput" placeholder="Pay Range"
                                value="{{$job->pay_range}}" name="pay_range">
+                                @error('pay_range')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                     </div>
                     <div class="col-md-4 mb-3">
                         <!--EMPLOYMENT-->
@@ -98,14 +123,24 @@
                     <!-- CONTACT PHONE NUMBER -->
                     <div class="col-md-6 mb-3">
                         <label for="phoneInput">{{__('Contact Phone Number:')}}</label>
-                        <input type="text" class="form-control" id="phoneInput" placeholder="Contact Phone Number"
+                        <input type="text" class="form-control @error('phonenumber') is-invalid @enderror" required autocomplete="phonenumber" autofocus id="phoneInput" placeholder="Contact Phone Number"
                                value="{{$job->phonenumber}}" name="phonenumber">
+                               @error('phonenumber')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                     </div>
                     <!-- CONTACT EMAIL ADDRESS -->
                     <div class="col-md-6 mb-3">
                         <label for="emailInput">{{__('Contact Email Address:')}}</label>
-                        <input type="text" class="form-control" id="emailInput" placeholder="Contact Email Address"
-                               value="{{$job->email}}" name="email">
+                        <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" required autocomplete="email" autofocus id="emailInput" placeholder="Contact Email Address"
+                               value="{{$job->email}}">
+                                  @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                     </div>
                 </div>
                <td align="center">

@@ -1,5 +1,19 @@
 <?php
-private $rest;
+
+
+
+namespace App\Http\Controllers;
+use App\DTO;
+use Illuminate\Http\Request;
+use App\Services\Business\SecurityService;
+use App\Services\Business\RestService;
+
+class UsersRestController extends Controller
+{
+    private $rest;
+
+
+
     public function __construct(){
         $this->rest = new RestService();
     }

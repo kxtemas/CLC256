@@ -10,20 +10,8 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-      
-    public function showUpdate(Request $request){
-        $securityService = new SecurityService();
-        $user = $securityService->getUser();
-        $name = $request->input('name');
-        $email = $request->input('email');
-        
-        $securityService->updateUser('name', $name);
-        $securityService->updateUser('email', $email);
-
-        return view('admin.update')
-        ->with('user', $user);
-    }
     
+
     public function showDelete(Request $request){
         $securityService = new SecurityService();
         $id = $request->input('id');

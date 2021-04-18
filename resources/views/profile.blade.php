@@ -30,10 +30,9 @@ $udbs = new UserDatabaseService();
 $username = $udbs->GetUsernameByID($userID);
  ?>
 
- @extends('layouts.app')
+@extends('layouts.app')
 @section('content')
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
         <meta charset="ISO-8859-1">
@@ -41,88 +40,67 @@ $username = $udbs->GetUsernameByID($userID);
     </head>
     <body>
 
-    <h2><?php echo "authID: " . auth()->id(); ?></h2>
-    <h2><?php echo "authID is int: " . is_int(auth()->id()); ?></h2>
-		<table class = "center">
+    <h2><?php "authID: " . auth()->id(); ?></h2>
+    <h2><?php  "authID is int: " . is_int(auth()->id()); ?></h2>
+    <h2>My Profile</h2>
+	<table class="table table-dark table-hover">
+            <thead>
+            <tr class="table-bordered border-light">
+              
+                <th>Phone Number</th>
+                <td><?php echo $profile->getPhoneNumber();?></td>
+               </tr> 
+                  <tr class="table-bordered border-light">
+                <th>Street Address</th>
+                	<td><?php echo $profile->getStreet(); ?></td>
+    						</tr>
+    			   <tr class="table-bordered border-light">			
+                <th>City</th>
+                	<td><?php echo $profile->getCity(); ?></td>
+    						</tr>
+    						   <tr class="table-bordered border-light">
+                <th>State</th>         
+    				<td><?php echo $profile->getState(); ?></td>
+    						</tr>
+    						   <tr class="table-bordered border-light">
+           		<th>Zipcode</th>           		
+    				<td><?php echo $profile->getZipCode(); ?></td>
+    						</tr>
+    						   <tr class="table-bordered border-light">
+           		<th>Employment Statue</th>	
+           		<td><?php echo $profile->getEmploymentStatus(); ?></td>
+    						</tr>
+    						   <tr class="table-bordered border-light">
+           		<th>Occupation</th>
+           			<td><?php echo $profile->getOccupation(); ?></td>
+    						</tr>
+    						   <tr class="table-bordered border-light">
+           		<th>Company Name</th>
+           		
+           		<td><?php echo $profile->getCompanyName(); ?></td>
+    						</tr>
+    						   <tr class="table-bordered border-light">
+           		<th>Educational Background</th>
+           		<td><?php echo $profile->getEducationalBackground(); ?></td>
+    						</tr>
+    						   <tr class="table-bordered border-light">
+           		<th>Skills</th>
+           		<td><?php echo $profile->getSkillsList(); ?></td>
+    						</tr>
+    						   <tr class="table-bordered border-light">
+           		<th>Job History</th>
+           		<td><?php echo $profile->getJobHistory(); ?></td>
+            </tr>
+            </thead>
+ 			
 
-		<table>
-
-			<!-- Name -->
-			<tr>
-				<td>Name</td>
-				<td><?php echo $username; ?></td>
-			</tr>
-			<!-- Phone Number -->
-			<tr>
-				<td>Phone Number</td>
-				<td><?php echo $profile->getPhoneNumber(); ?></td>
-			</tr>
-			<!-- Street Address --> 
-			<tr>
-				<td>Street Address</td>
-				<td><?php echo $profile->getStreet(); ?></td>
-			</tr>
-			<!-- City -->
-			<tr>
-				<td>City</td>
-				<td><?php echo $profile->getCity(); ?></td>
-			</tr>
-			<!-- State -->
-			<tr>
-				<td>State</td>
-				<td><?php echo $profile->getState(); ?></td>
-			</tr>
-			<!-- Zip Code -->
-			<tr>
-				<td>Zipcode</td>
-				<td><?php echo $profile->getZipCode(); ?></td>
-			</tr>
-			<!-- Employment Status -->
-			<tr>
-				<td>Employment Status</td>
-				<td><?php echo $profile->getEmploymentStatus(); ?></td>
-			</tr>
-			<!-- Occupation -->
-			<tr>
-				<td>Occupation</td>
-				<td><?php echo $profile->getOccupation(); ?></td>
-			</tr>
-			<!-- Company Name -->
-			<tr>
-				<td>Company Name</td>
-				<td><?php echo $profile->getCompanyName(); ?></td>
-			</tr>
-			<!-- Educational Background -->
-			<tr>
-				<td>Educational Background</td>
-				<td><?php echo $profile->getEducationalBackground(); ?></td>
-			</tr>
-			
-			<!-- Skills -->   			
-			<tr>
-				<td>Skills</td>
-				<td><?php echo $profile->getSkillsList(); ?>"</td>
-			</tr>
-			
-			<!-- Job History -->   			
-			<tr>
-				<td>Job History</td>
-				<td><?php echo $profile->getJobHistory(); ?></td>
-			</tr>
-			
-			<!-- Edit button -->
-			<?php //if($userID == auth()->id())
-			    // TODO: Discover if this works or not
-			{?>
-
-    			<tr class ="center"><button ><a href="{{url('/editprofile')}}">Edit Profile</a></button>
-</form>
-
-    		
-			<?php 
-			}?>
-		</table>
+</table>
+<form action="{{url('/editprofile')}}">
+ <button class="btn btn-info" type="submit">Edit Profile</button>
+ </form>
+		
     </body>
 </html>
 
- @endsection 
+@endsection
+
