@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers;
 use App\DTO;
 use Illuminate\Http\Request;

@@ -1,7 +1,5 @@
 <?php
-
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
 
 use JsonSerializable;
@@ -51,4 +49,4 @@ class DTO implements JsonSerializable {
     {
         return $this->data;
     }
-}
+
